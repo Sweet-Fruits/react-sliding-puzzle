@@ -3,6 +3,22 @@ import {render, ReactDom }from 'react-dom';
 import {Motion, spring} from 'react-motion';
 import _ from 'lodash';
 import goal1 from './assets/goal1.png';
+import goal2 from './assets/goal2.png';
+import goal3 from './assets/goal3.png';
+import goal4 from './assets/goal4.png';
+import goal5 from './assets/goal5.png';
+import goal6 from './assets/goal6.png';
+import goal7 from './assets/goal7.png';
+import goal8 from './assets/goal8.png';
+import goal9 from './assets/goal9.png';
+import goal10 from './assets/goal10.png';
+import goal11 from './assets/goal11.png';
+import goal12 from './assets/goal12.png';
+import goal13 from './assets/goal13.png';
+import goal14 from './assets/goal14.png';
+import goal15 from './assets/goal15.png';
+import goal16 from './assets/goal16.png';
+import goal17 from './assets/goal17.png';
 import './App.css';
 
 
