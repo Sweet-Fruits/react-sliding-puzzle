@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Motion, spring } from 'react-motion';
 import _ from 'lodash';
-import logo from './assets/logo.png';
+import globalGoals from './assets/global-goals.png';
 import goal1 from './assets/goal1.png';
 import goal2 from './assets/goal2.png';
 import goal3 from './assets/goal3.png';
@@ -387,7 +387,7 @@ class Tile extends Component {
               <li
                 style={{
                   ...style,
-                  backgroundImage: `url(${logo})`,
+                  backgroundImage: `url(${globalGoals})`,
                   transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
                 }}
                 onClick={this.handleClick}></li>
