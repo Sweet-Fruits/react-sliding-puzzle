@@ -1,6 +1,6 @@
-import {Component } from 'react';
-import {render, ReactDom }from 'react-dom';
-import {Motion, spring} from 'react-motion';
+import { Component } from 'react';
+import { render, ReactDom } from 'react-dom';
+import { Motion, spring } from 'react-motion';
 import _ from 'lodash';
 import goal1 from './assets/goal1.png';
 import goal2 from './assets/goal2.png';
@@ -21,14 +21,12 @@ import goal16 from './assets/goal16.png';
 import goal17 from './assets/goal17.png';
 import './App.css';
 
-
 const tilesStyle = {
   listStyle: 'none',
   margin: '0 auto',
   padding: 5,
-  position: 'relative'
-}
-
+  position: 'relative',
+};
 
 const tileStyle = {
   backgroundColor: 'grey',
@@ -36,32 +34,32 @@ const tileStyle = {
   boxSizing: 'border-box',
   display: 'block',
   padding: 6,
-  position: 'absolute'
-}
+  position: 'absolute',
+};
 
 const holeStyle = {
-  opacity: 0
-}
+  opacity: 0,
+};
 
 const buttonStyle = {
   display: 'block',
   margin: '16px auto',
-  padding: '8px 16px'
-}
+  padding: '8px 16px',
+};
 
 // Checks if the puzzle can be solved.
 //
 // Examples:
 //   isSolvable([3, 7, 6, 0, 5, 1, 2, 4, 8], 3, 3) // => false
 //   isSolvable([6, 4, 5, 0, 1, 2, 3, 7, 8], 3, 3) // => true
-function isSolvable (numbers, rows, cols) {
-  let product = 1
+function isSolvable(numbers, rows, cols) {
+  let product = 1;
   for (let i = 1, l = rows * cols - 1; i <= l; i++) {
     for (let j = i + 1, m = l + 1; j <= m; j++) {
-      product *= (numbers[i - 1] - numbers[j - 1]) / (i - j)
+      product *= (numbers[i - 1] - numbers[j - 1]) / (i - j);
     }
   }
-  return Math.round(product) === 1
+  return Math.round(product) === 1;
 }
 
 // Checks if the puzzle is solved.
@@ -69,183 +67,401 @@ function isSolvable (numbers, rows, cols) {
 // Examples:
 //   isSolved([6, 4, 5, 0, 1, 2, 3, 7, 8]) // => false
 //   isSolved([0, 1, 2, 3, 4, 5, 6, 7, 8]) // => true
-function isSolved (numbers) {
+function isSolved(numbers) {
   for (let i = 0, l = numbers.length; i < l; i++) {
     if (numbers[i] !== i) {
-      return false
+      return false;
     }
   }
-  return true
+  return true;
 }
 
 // Get the linear index from a row/col pair.
-function getLinearPosition ({row, col}, rows, cols) {
-  return parseInt(row, 10) * cols + parseInt(col, 10)
+function getLinearPosition({ row, col }, rows, cols) {
+  return parseInt(row, 10) * cols + parseInt(col, 10);
 }
 
 // Get the row/col pair from a linear index.
-function getMatrixPosition (index, rows, cols) {
+function getMatrixPosition(index, rows, cols) {
   return {
     row: Math.floor(index / cols),
-    col: index % cols
-  }
+    col: index % cols,
+  };
 }
 
-function getVisualPosition ({row, col}, width, height) {
+function getVisualPosition({ row, col }, width, height) {
   return {
     x: col * width,
-    y: row * height
-  }
+    y: row * height,
+  };
 }
 
-function shuffle (numbers, hole, rows, cols) {
+function shuffle(numbers, hole, rows, cols) {
   do {
-    numbers = _.shuffle(_.without(numbers, hole)).concat(hole)
-  } while (isSolved(numbers) || !isSolvable(numbers, rows, cols))
-  return numbers
+    numbers = _.shuffle(_.without(numbers, hole)).concat(hole);
+  } while (isSolved(numbers) || !isSolvable(numbers, rows, cols));
+  return numbers;
 }
 
-function canSwap (src, dest, rows, cols) {
-  const {row: srcRow, col: srcCol} = getMatrixPosition(src, rows, cols)
-  const {row: destRow, col: destCol} = getMatrixPosition(dest, rows, cols)
-  return (Math.abs(srcRow - destRow) + Math.abs(srcCol - destCol) === 1)
+function canSwap(src, dest, rows, cols) {
+  const { row: srcRow, col: srcCol } = getMatrixPosition(src, rows, cols);
+  const { row: destRow, col: destCol } = getMatrixPosition(dest, rows, cols);
+  return Math.abs(srcRow - destRow) + Math.abs(srcCol - destCol) === 1;
 }
 
-function swap (numbers, src, dest) {
+function swap(numbers, src, dest) {
   numbers = _.clone(numbers);
-  [numbers[src], numbers[dest]] = [numbers[dest], numbers[src]]
-  return numbers
+  [numbers[src], numbers[dest]] = [numbers[dest], numbers[src]];
+  return numbers;
 }
 
 class Tile extends Component {
-  constructor () {
-    super()
-    this.handleClick = this.handleClick.bind(this)
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
   }
-  
-  handleClick () {
-    const {index} = this.props
-    this.props.onClick(index)
+
+  handleClick() {
+    const { index } = this.props;
+    this.props.onClick(index);
   }
-  
-  render () {
-    const {hole, number, index, rows, cols, width, height} = this.props
-    const matrixPos = getMatrixPosition(index, rows, cols)
-    const visualPos = getVisualPosition(matrixPos, width, height)
+
+  render() {
+    const { hole, number, index, rows, cols, width, height } = this.props;
+    const matrixPos = getMatrixPosition(index, rows, cols);
+    const visualPos = getVisualPosition(matrixPos, width, height);
     const motionStyle = {
       translateX: spring(visualPos.x),
-      translateY: spring(visualPos.y)
-    }
+      translateY: spring(visualPos.y),
+    };
     const style = {
       ...tileStyle,
       ...(number === hole ? holeStyle : {}),
       width,
-      height
+      height,
+    };
+
+    switch (number) {
+      case 0:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal1})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 1:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal2})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 2:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal3})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 3:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal4})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 4:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal5})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 5:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal6})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 6:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal7})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 7:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal8})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 8:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal9})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 9:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal10})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 10:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal11})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 11:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal12})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 12:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal13})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 13:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal14})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 14:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal15})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 15:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal16})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 16:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal17})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      default:
+        return (
+          <></>
+        );
     }
-    if(number===0){
-      return (
-        <Motion style={motionStyle}>
-          {({translateX, translateY}) => (
-            <li style={{...style, backgroundImage: `url(${goal1})`, transform: `translate3d(${translateX}px, ${translateY}px, 0)`}}
-              onClick={this.handleClick}
-              >
-            </li>
-          )}
-        </Motion>
-      )
-    }
-    else{
-      return (
-        <Motion style={motionStyle}>
-          {({translateX, translateY}) => (
-            <li style={{...style, transform: `translate3d(${translateX}px, ${translateY}px, 0)`}}
-              onClick={this.handleClick}
-              >
-              {number}
-            </li>
-          )}
-        </Motion>
-      )
-    }
-    
   }
 }
 
 class Tiles extends Component {
-  constructor (props) {
-    super(props)
-    
-    const {rows, cols} = props
-    this.state = {numbers: _.range(0, rows * cols)}
-    
-    this.handleTileClick = this.handleTileClick.bind(this)
-    this.handleButtonClick = this.handleButtonClick.bind(this)
+  constructor(props) {
+    super(props);
+
+    const { rows, cols } = props;
+    this.state = { numbers: _.range(0, rows * cols) };
+
+    this.handleTileClick = this.handleTileClick.bind(this);
+    this.handleButtonClick = this.handleButtonClick.bind(this);
   }
-  
-  handleTileClick (index) {
-    this.swap(index)
+
+  handleTileClick(index) {
+    this.swap(index);
   }
-  
-  handleButtonClick () {
-    this.shuffle()
+
+  handleButtonClick() {
+    this.shuffle();
   }
-  
-  shuffle () {
-    const {hole, rows, cols} = this.props
-    const {numbers} = this.state
-    const shuffledNumbers = shuffle(numbers, hole, rows, cols)
-    this.setState({numbers: shuffledNumbers})
+
+  shuffle() {
+    const { hole, rows, cols } = this.props;
+    const { numbers } = this.state;
+    const shuffledNumbers = shuffle(numbers, hole, rows, cols);
+    this.setState({ numbers: shuffledNumbers });
   }
-  
-  swap (tileIndex) {
-    const {hole, rows, cols} = this.props
-    const {numbers} = this.state
-    const holeIndex = numbers.indexOf(hole)
+
+  swap(tileIndex) {
+    const { hole, rows, cols } = this.props;
+    const { numbers } = this.state;
+    const holeIndex = numbers.indexOf(hole);
     if (canSwap(tileIndex, holeIndex, rows, cols)) {
-      const newNumbers = swap(numbers, tileIndex, holeIndex)
-      this.setState({numbers: newNumbers})
+      const newNumbers = swap(numbers, tileIndex, holeIndex);
+      this.setState({ numbers: newNumbers });
     }
   }
-  
-  render () {
-    const {rows, cols, width, height} = this.props
-    const {numbers} = this.state
-    const solved = isSolved(numbers)
-    const pieceWidth = Math.round(width / cols)
-    const pieceHeight = Math.round(height / rows)
+
+  render() {
+    const { rows, cols, width, height } = this.props;
+    const { numbers } = this.state;
+    const solved = isSolved(numbers);
+    const pieceWidth = Math.round(width / cols);
+    const pieceHeight = Math.round(height / rows);
     const style = {
       ...tilesStyle,
       width,
-      height
-    }
-    
+      height,
+    };
+
     return (
       <div>
         <ul style={style}>
           {numbers.map((number, index) => (
-            <Tile {...this.props} index={index} number={number} key={number}
-              width={pieceWidth} height={pieceHeight}
+            <Tile
+              {...this.props}
+              index={index}
+              number={number}
+              key={number}
+              width={pieceWidth}
+              height={pieceHeight}
               onClick={this.handleTileClick}
             />
           ))}
         </ul>
-        <button style={buttonStyle}
-          onClick={this.handleButtonClick}
-        >
+        <button style={buttonStyle} onClick={this.handleButtonClick}>
           {solved ? 'Start' : 'Restart'}
         </button>
       </div>
-    )
+    );
   }
 }
 
 class Puzzle extends Component {
-  render () {
-    return (
-      <Tiles rows={3} cols={6} hole={17}
-        width={1200} height={600}
-      />
-    )
+  render() {
+    return <Tiles rows={3} cols={6} hole={17} width={1200} height={600} />;
   }
 }
 
