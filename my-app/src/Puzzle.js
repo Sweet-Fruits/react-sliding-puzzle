@@ -2,7 +2,8 @@ import {Component } from 'react';
 import {render, ReactDom }from 'react-dom';
 import {Motion, spring} from 'react-motion';
 import _ from 'lodash';
-import logo from './assets/logo.png';
+import goal1 from './assets/goal1.png';
+import './App.css';
 
 
 const tilesStyle = {
@@ -103,7 +104,6 @@ function swap (numbers, src, dest) {
 class Tile extends Component {
   constructor () {
     super()
-    
     this.handleClick = this.handleClick.bind(this)
   }
   
@@ -130,9 +130,9 @@ class Tile extends Component {
       return (
         <Motion style={motionStyle}>
           {({translateX, translateY}) => (
-            <li style={{...style, backgroundColor:"red", transform: `translate3d(${translateX}px, ${translateY}px, 0)`}}
+            <li style={{...style, backgroundImage: `url(${goal1})`, transform: `translate3d(${translateX}px, ${translateY}px, 0)`}}
               onClick={this.handleClick}
-              >{number}
+              >
             </li>
           )}
         </Motion>
