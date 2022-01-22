@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import { render, ReactDom } from 'react-dom';
 import { Motion, spring } from 'react-motion';
 import _ from 'lodash';
+import logo from './assets/logo.png';
 import goal1 from './assets/goal1.png';
 import goal2 from './assets/goal2.png';
 import goal3 from './assets/goal3.png';
@@ -38,7 +38,7 @@ const tileStyle = {
 };
 
 const holeStyle = {
-  opacity: 0,
+  opacity: 1,
 };
 
 const buttonStyle = {
@@ -374,6 +374,20 @@ class Tile extends Component {
                 style={{
                   ...style,
                   backgroundImage: `url(${goal17})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={this.handleClick}></li>
+            )}
+          </Motion>
+        );
+      case 17:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${logo})`,
                   transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
                 }}
                 onClick={this.handleClick}></li>
