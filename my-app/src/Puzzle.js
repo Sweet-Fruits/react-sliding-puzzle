@@ -126,7 +126,7 @@ class Tile extends Component {
       width,
       height
     }
-    if(number===1){
+    if(number===0){
       return (
         <Motion style={motionStyle}>
           {({translateX, translateY}) => (
@@ -226,7 +226,7 @@ class Tiles extends Component {
 class Puzzle extends Component {
   render () {
     return (
-      <Tiles rows={3} cols={6} hole={8}
+      <Tiles rows={3} cols={6} hole={17}
         width={1200} height={600}
       />
     )
