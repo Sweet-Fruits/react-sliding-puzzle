@@ -26,7 +26,7 @@ const tilesStyle = {
   margin: '0 auto',
   padding: 5,
   position: 'relative',
-  bottom: 30
+
 };
 
 const tileStyle = {
@@ -44,19 +44,14 @@ const holeStyle = {
 
 const buttonStyle = {
   display: 'block',
-  margin: '16px auto',
+  fontWeight: "bold",
+  fontStyle:"italic",
+  margin: '50px auto',
   padding: '8px 16px',
-  border: "0.1em solid #000000",
-  bordeRadius: "0.12em",
-  boxSizing: "border-box",
-  textDecoration: "none",
-  fontFamily: "Roboto, sans-serif",
-  fontWeight: 300,
-  color: "#000000",
-  textShadow: "0 0.04em 0.04em rgba(0, 0, 0, 0.35)",
-  backgroundColor: "#ffffff",
-  textAlign: "center",
-  transition: "all 0.15s",
+  border: '1px solid rgba(0, 0, 0, 1)', 
+  padding: 10,
+  backgroundColor: "#ffff"
+  
 };
 
 // Checks if the puzzle can be solved.
@@ -477,8 +472,8 @@ class Tiles extends Component {
             />
           ))}
         </ul>
-        <button style={buttonStyle} className="shuffle" onClick={this.handleButtonClick}>
-          {solved ? 'Start' : 'Restart'}
+        <button className='rainbow-button' onClick={this.handleButtonClick}>
+          {solved ? 'START!' : 'RESTART'}
         </button>
       </div>
     );
