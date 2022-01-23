@@ -5,7 +5,7 @@
 body {
   padding: 16px;
   background-image: url('./assets/backgroundImage.png');
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-size: cover;
 }
 
@@ -39,39 +39,15 @@ img {
   height: 2rem;
 }
 
-/* .underPuzzleButton {
-  display: 'block';
-  margin: '16px auto';
-  padding: '20px 20px';
-  border: 0.1em solid #000000;
-  border-radius: 0.12em;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-  color: #000000;
-  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
-  background-color: #ffffff;
-  text-align: center;
-  transition: all 0.15s;
+.over-button {
+  display: flex;
+  justify-content: center;
+  align-self: center;
 }
-.underPuzzleButton:hover {
-  text-shadow: 0 0 2em rgba(255, 255, 255, 1);
-  background-color: 'black';
-  border-color: #ffffff;
-}
-@media all and (max-width: 30em) {
-  .underPuzzleButton {
-    display: block;
-    margin: 0.4em auto;
-  }
-} */
 
 .rainbow-button {
   position: relative;
   color: white;
-  left: 57rem;
-  top: 4rem;
   width: calc(5vw);
   height: calc(2vw);
   background-image: linear-gradient(
@@ -83,12 +59,9 @@ img {
     #c31f33 80%,
     #183668 100%
   );
+  top: 4rem;
   border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-transform: uppercase;
-  /* font-style: italic; */
   font-size: 0.8rem;
   font-weight: bold;
 }
