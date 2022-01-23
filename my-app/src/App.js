@@ -4,7 +4,7 @@ import logo from './assets/logo.png';
 
 function App() {
   return (
-    <div id="container">
+    <div>
       <h1 id="title"><img className='imageTitle' src={logo} alt='loco'/>THE GLOBAL GOALS</h1>
       <h2 id="subtitle"> For Sustainable Development</h2>
       <Puzzle/>
