@@ -472,8 +472,9 @@ class Tiles extends Component {
             />
           ))}
         </ul>
+     
         <button className='rainbow-button' onClick={this.handleButtonClick}>
-          {solved ? 'START!' : 'RESTART'}
+        {solved ? 'START!' : 'RESTART'}
         </button>
       </div>
     );
