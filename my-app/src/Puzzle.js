@@ -21,12 +21,14 @@ import goal16 from './assets/goal16.png';
 import goal17 from './assets/goal17.png';
 import './App.css';
 
+// Use dis
+// const { numbers } = this.state;
+
 const tilesStyle = {
   listStyle: 'none',
   margin: '0 auto',
   padding: 5,
   position: 'relative',
-
 };
 
 const tileStyle = {
@@ -40,18 +42,6 @@ const tileStyle = {
 
 const holeStyle = {
   opacity: 1,
-};
-
-const buttonStyle = {
-  display: 'block',
-  fontWeight: "bold",
-  fontStyle:"italic",
-  margin: '50px auto',
-  padding: '8px 16px',
-  border: '1px solid rgba(0, 0, 0, 1)', 
-  padding: 10,
-  backgroundColor: "#ffff"
-  
 };
 
 // Checks if the puzzle can be solved.
@@ -133,7 +123,13 @@ class Tile extends Component {
     this.props.onClick(index);
   }
 
+  handleCompletion() {
+
+  }
+
   render() {
+    // Solved is true when mounting
+    console.log(this.props);
     const { hole, number, index, rows, cols, width, height } = this.props;
     const matrixPos = getMatrixPosition(index, rows, cols);
     const visualPos = getVisualPosition(matrixPos, width, height);
@@ -402,9 +398,7 @@ class Tile extends Component {
           </Motion>
         );
       default:
-        return (
-          <></>
-        );
+        return <></>;
     }
   }
 }
@@ -469,13 +463,15 @@ class Tiles extends Component {
               width={pieceWidth}
               height={pieceHeight}
               onClick={this.handleTileClick}
+              solved={solved}
             />
           ))}
         </ul>
-        <div className='over-button'><button className='rainbow-button' onClick={this.handleButtonClick}>
-        {solved ? 'START!' : 'RESTART'}
-        </button></div>
-        
+        <div className="over-button">
+          <button className="rainbow-button" onClick={this.handleButtonClick}>
+            {solved ? 'START!' : 'RESTART'}
+          </button>
+        </div>
       </div>
     );
   }
