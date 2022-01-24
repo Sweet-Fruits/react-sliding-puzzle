@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Motion, spring } from 'react-motion';
+import Modal from './Modal.js';
 import _ from 'lodash';
 import globalGoals from './assets/global-goals.png';
 import goal1 from './assets/goal1.png';
@@ -115,21 +116,68 @@ function swap(numbers, src, dest) {
 class Tile extends Component {
   constructor() {
     super();
+    this.state = {
+      show: false
+    };
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
+
   handleClick() {
-    const { index } = this.props;
+    const { index, solved } = this.props;
     this.props.onClick(index);
+    if(isSolved(solved)){
+      this.showModal();
+    }
+  
   }
 
-  handleCompletion() {
 
-  }
+    // if(isSolved(solved)){
+    //   switch(index){
+    //     case 0:
+    //       console.log("hey 1");
+    //       break;
+    //     case 1:
+    //       console.log("hey 2");
+    //       break;
+    //     case 2:
+    //       console.log("hey 1");
+    //       break;
+    //     case 3:
+    //       console.log("hey 2");
+    //       break;
+    //     case 4:
+    //       console.log("hey 1");
+    //       break;
+    //     case 5:
+    //       console.log("hey 2");
+    //       break;
+    //     case 6:
+    //       console.log("hey 1");
+    //       break;
+    //     case 7:
+    //       console.log("hey 2");
+    //       break;        
+    //   }
+    // }
+
+
+  // handleCompletion() {
+
+  // }
 
   render() {
     // Solved is true when mounting
-    console.log(this.props);
     const { hole, number, index, rows, cols, width, height } = this.props;
     const matrixPos = getMatrixPosition(index, rows, cols);
     const visualPos = getVisualPosition(matrixPos, width, height);
@@ -155,7 +203,12 @@ class Tile extends Component {
                   backgroundImage: `url(${goal1})`,
                   transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
                 }}
-                onClick={this.handleClick}></li>
+                onClick={this.handleClick}>
+                  <Modal show={this.state.show} handleClose={this.hideModal}>
+                    <li style={{backgroundImage: `url(${goal2})`}}>saddasads</li>
+                 </Modal>
+                
+                </li>
             )}
           </Motion>
         );
@@ -414,7 +467,7 @@ class Tiles extends Component {
     this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
-  handleTileClick(index) {
+  handleTileClick(index,) {
     this.swap(index);
   }
 
@@ -454,7 +507,7 @@ class Tiles extends Component {
     return (
       <div>
         <ul style={style}>
-          {numbers.map((number, index) => (
+          {numbers.map((number, index, solved) => (
             <Tile
               {...this.props}
               index={index}
