@@ -3,7 +3,7 @@
 }
 
 body {
-  background-image: url('./assets/backgroundImage.png');
+  background-image: url('../assets/backgroundImage.png');
   background-repeat: repeat;
   background-size: cover;
 }

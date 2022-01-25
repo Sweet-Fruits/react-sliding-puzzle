@@ -1,7 +1,6 @@
-// import Puzzle from './Puzzle';
 import Puzzle from './components/Puzzle';
 import logo from './assets/logo.png';
-import './App.css';
+import './styles/App.css';
 
 const App = () => {
   return (

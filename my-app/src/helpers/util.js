@@ -1,9 +1,6 @@
 import _ from 'lodash';
+
 // Checks if the puzzle can be solved.
-//
-// Examples:
-//   isSolvable([3, 7, 6, 0, 5, 1, 2, 4, 8], 3, 3) // => false
-//   isSolvable([6, 4, 5, 0, 1, 2, 3, 7, 8], 3, 3) // => true
 export const isSolvable = (numbers, rows, cols) => {
   let product = 1;
   for (let i = 1, l = rows * cols - 1; i <= l; i++) {
@@ -15,10 +12,6 @@ export const isSolvable = (numbers, rows, cols) => {
 };
 
 // Checks if the puzzle is solved.
-//
-// Examples:
-//   isSolved([6, 4, 5, 0, 1, 2, 3, 7, 8]) // => false
-//   isSolved([0, 1, 2, 3, 4, 5, 6, 7, 8]) // => true
 export const isSolved = numbers => {
   for (let i = 0, l = numbers.length; i < l; i++) {
     if (numbers[i] !== i) {
