@@ -1,5 +1,5 @@
 // import Puzzle from './Puzzle';
-import PuzzleHook from './components/PuzzleHook';
+import Puzzle from './components/Puzzle';
 import logo from './assets/logo.png';
 import './App.css';
 
@@ -11,7 +11,7 @@ const App = () => {
         THE GLOBAL GOALS
       </h1>
       <h2 id="subtitle">For Sustainable Development</h2>
-      <PuzzleHook />
+      <Puzzle />
     </div>
   );
 };

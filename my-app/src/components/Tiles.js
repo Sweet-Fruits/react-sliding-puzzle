@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import TileHook from './TileHook';
+import Tile from './Tile';
 import _ from 'lodash';
 import {
   isSolved,
@@ -16,7 +16,6 @@ const tilesStyle = {
 };
 
 const TilesHook = props => {
-  console.log(props);
   const { rows, cols, width, height, hole } = props;
   const [numberState, setNumberState] = useState(_.range(0, rows * cols));
   const solved = isSolved(numberState);
@@ -55,7 +54,7 @@ const TilesHook = props => {
     <div>
       <ul style={style}>
         {numberState.map((number, index, solved) => (
-          <TileHook
+          <Tile
             {...props}
             index={index}
             number={number}

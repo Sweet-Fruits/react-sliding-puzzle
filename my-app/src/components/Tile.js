@@ -5,7 +5,7 @@ import {
   getVisualPosition,
 } from '../helpers/util';
 import { Motion, spring } from 'react-motion';
-import Modal from '../components/Modal';
+import Modal from './Modal';
 import globalGoals from '../assets/global-goals.png';
 import goal1 from '../assets/goal1.png';
 import goal2 from '../assets/goal2.png';
@@ -38,7 +38,7 @@ const holeStyle = {
   opacity: 1,
 };
 
-const TileHook = props => {
+const Tile = props => {
   const [show, setShow] = useState(false);
 
   const showModal = () => {
@@ -334,4 +334,4 @@ const TileHook = props => {
   }
 };
 
-export default TileHook;
+export default Tile;
