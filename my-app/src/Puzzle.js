@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Motion, spring } from 'react-motion';
-import Modal from './Modal.js';
+import Modal from './components/Modal.js';
 import _ from 'lodash';
 import globalGoals from './assets/global-goals.png';
 import goal1 from './assets/goal1.png';
@@ -117,7 +117,7 @@ class Tile extends Component {
   constructor() {
     super();
     this.state = {
-      show: false
+      show: false,
     };
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
@@ -135,41 +135,39 @@ class Tile extends Component {
   handleClick() {
     const { index, solved } = this.props;
     this.props.onClick(index);
-    if(isSolved(solved)){
+    if (isSolved(solved)) {
       this.showModal();
     }
   }
 
-
-    // if(isSolved(solved)){
-    //   switch(index){
-    //     case 0:
-    //       console.log("hey 1");
-    //       break;
-    //     case 1:
-    //       console.log("hey 2");
-    //       break;
-    //     case 2:
-    //       console.log("hey 1");
-    //       break;
-    //     case 3:
-    //       console.log("hey 2");
-    //       break;
-    //     case 4:
-    //       console.log("hey 1");
-    //       break;
-    //     case 5:
-    //       console.log("hey 2");
-    //       break;
-    //     case 6:
-    //       console.log("hey 1");
-    //       break;
-    //     case 7:
-    //       console.log("hey 2");
-    //       break;        
-    //   }
-    // }
-
+  // if(isSolved(solved)){
+  //   switch(index){
+  //     case 0:
+  //       console.log("hey 1");
+  //       break;
+  //     case 1:
+  //       console.log("hey 2");
+  //       break;
+  //     case 2:
+  //       console.log("hey 1");
+  //       break;
+  //     case 3:
+  //       console.log("hey 2");
+  //       break;
+  //     case 4:
+  //       console.log("hey 1");
+  //       break;
+  //     case 5:
+  //       console.log("hey 2");
+  //       break;
+  //     case 6:
+  //       console.log("hey 1");
+  //       break;
+  //     case 7:
+  //       console.log("hey 2");
+  //       break;
+  //   }
+  // }
 
   // handleCompletion() {
 
@@ -203,11 +201,12 @@ class Tile extends Component {
                   transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
                 }}
                 onClick={this.handleClick}>
-                  <Modal show={this.state.show} handleClose={this.hideModal}>
-                    <li style={{backgroundImage: `url(${goal2})`}}>saddasads</li>
-                 </Modal>
-                
-                </li>
+                <Modal show={this.state.show} handleClose={this.hideModal}>
+                  <li style={{ backgroundImage: `url(${goal2})` }}>
+                    saddasads
+                  </li>
+                </Modal>
+              </li>
             )}
           </Motion>
         );
@@ -466,7 +465,7 @@ class Tiles extends Component {
     this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
-  handleTileClick(index,) {
+  handleTileClick(index) {
     this.swap(index);
   }
 
