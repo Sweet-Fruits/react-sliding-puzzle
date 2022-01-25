@@ -138,7 +138,6 @@ class Tile extends Component {
     if(isSolved(solved)){
       this.showModal();
     }
-  
   }
 
 
