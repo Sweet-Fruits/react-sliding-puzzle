@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Tile from './Tile';
 import _ from 'lodash';
 import {
@@ -16,8 +16,9 @@ const tilesStyle = {
 };
 
 const TilesHook = props => {
-  const { rows, cols, width, height, hole } = props;
+  const { rows, cols, width, height, hole} = props;
   const [numberState, setNumberState] = useState(_.range(0, rows * cols));
+  const [isShuffled, setIsShuffled] = useState(false);
   const solved = isSolved(numberState);
   const pieceWidth = Math.round(width / cols);
   const pieceHeight = Math.round(height / rows);
@@ -26,19 +27,22 @@ const TilesHook = props => {
     width,
     height,
   };
-
+  const isSuffledTemp = isShuffled;
   const handleTileClick = index => {
     swap(index);
   };
 
   const handleButtonClick = () => {
+    setIsShuffled(true);
     shuffle();
+    
   };
 
   const shuffle = () => {
     const numbers = numberState;
     const shuffledNumbers = shuffleCards(numbers, hole, rows, cols);
     setNumberState(shuffledNumbers);
+    
   };
 
   const swap = tileIndex => {
@@ -63,6 +67,7 @@ const TilesHook = props => {
             height={pieceHeight}
             onClick={handleTileClick}
             solved={solved}
+            isShuffled={isShuffled}
           />
         ))}
       </ul>

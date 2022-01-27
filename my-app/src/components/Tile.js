@@ -77,8 +77,13 @@ const images = {
 const Tile = props => {
   let subtitle;
   const [modal, setModal] = useState(false);
+  
+  console.log(props.isShuffled);
 
-  console.log(modal);
+
+  // if (isSolved(props.solved)) {
+  //   props.hasSolved = true;
+  // }
 
   const openModal = () => {
     setModal(!modal);
@@ -96,7 +101,7 @@ const Tile = props => {
   const handleClick = () => {
     const { index, solved } = props;
     props.onClick(index);
-    if (isSolved(solved)) {
+    if (isSolved(solved) && props.isShuffled) {
       openModal();
     }
   };
