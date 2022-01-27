@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   isSolved,
   getMatrixPosition,
@@ -26,6 +26,23 @@ import goal14 from '../assets/goal14.png';
 import goal15 from '../assets/goal15.png';
 import goal16 from '../assets/goal16.png';
 import goal17 from '../assets/goal17.png';
+import win1 from '../assets/win1.jpg';
+import win2 from '../assets/win2.jpg';
+import win3 from '../assets/win3.jpg';
+// import win4 from '../assets/win4.jpg';
+import win5 from '../assets/win5.jpg';
+import win6 from '../assets/win6.jpg';
+import win7 from '../assets/win7.jpg';
+import win8 from '../assets/win8.jpg';
+import win9 from '../assets/win9.jpg';
+import win10 from '../assets/win10.jpg';
+import win11 from '../assets/win11.jpg';
+import win12 from '../assets/win12.jpg';
+import win13 from '../assets/win13.jpg';
+import win14 from '../assets/win14.png';
+import win15 from '../assets/win15.jpg';
+import win16 from '../assets/win16.png';
+import win17 from '../assets/win17.jpg';
 
 const tileStyle = {
   backgroundColor: 'grey',
@@ -34,6 +51,11 @@ const tileStyle = {
   display: 'block',
   padding: 6,
   position: 'absolute',
+};
+
+const images = {
+  width:1066,
+  height:600,
 };
 
 const customStyles = {
@@ -56,20 +78,19 @@ const holeStyle = {
 const Tile = props => {
 
   let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  
 
   const openModal = () => {
-    setIsOpen(true);
+    setModalIsOpen(!modalIsOpen);
   }
 
   const afterOpenModal = () => {
-    // references are now sync'd and can be accessed.
     subtitle.style.color = '#f00';
   }
 
   const closeModal = () => {
-    setIsOpen(false);
-    console.log("!");
+    setModalIsOpen(!modalIsOpen);
   }
   
   const handleClick = () => {
@@ -77,8 +98,11 @@ const Tile = props => {
     props.onClick(index);
     if (isSolved(solved)) {
       openModal();
+
     }
   };
+
+  console.log(modalIsOpen);
 
   // Solved is true when mounting
   const { hole, number, index, rows, cols, width, height } = props;
@@ -106,9 +130,8 @@ const Tile = props => {
                 backgroundImage: `url(${goal1})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}
+              onClick={openModal}
               >
-               <button onClick={openModal}>Open Modal</button>
               <Modal
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
@@ -116,252 +139,454 @@ const Tile = props => {
                 style={customStyles}
                 contentLabel="Example Modal"
               >
-                <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-                <button onClick={closeModal}>close</button>
-                <div>I am a modal</div>
+                <img style={images} src={win1} onClick={closeModal}/>
               </Modal>
             </li>
           )}
         </Motion>
       );
-    case 1:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal2})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
-    case 2:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal3})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
-    case 3:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal4})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
-    case 4:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal5})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
+      case 1:
+        return (
+          <Motion style={motionStyle}>
+            {({ translateX, translateY }) => (
+              <li
+                style={{
+                  ...style,
+                  backgroundImage: `url(${goal2})`,
+                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                }}
+                onClick={openModal}
+                >
+                <Modal
+                  isOpen={modalIsOpen}
+                  onAfterOpen={afterOpenModal}
+                  onRequestClose={closeModal}
+                  style={customStyles}
+                  contentLabel="Example Modal"
+                >
+                  <img style={images} src={win2} onClick={closeModal}/>
+                </Modal>
+              </li>
+            )}
+          </Motion>
+        );
+      case 2:
+          return (
+            <Motion style={motionStyle}>
+              {({ translateX, translateY }) => (
+                <li
+                  style={{
+                    ...style,
+                    backgroundImage: `url(${goal3})`,
+                    transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                  }}
+                  onClick={openModal}
+                  >
+                  <Modal
+                    isOpen={modalIsOpen}
+                    onAfterOpen={afterOpenModal}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                    contentLabel="Example Modal"
+                  >
+                    <img style={images} src={win3} onClick={closeModal}/>
+                  </Modal>
+                </li>
+              )}
+            </Motion>
+          );
+        case 3:
+            return (
+              <Motion style={motionStyle}>
+                {({ translateX, translateY }) => (
+                  <li
+                    style={{
+                      ...style,
+                      backgroundImage: `url(${goal4})`,
+                      transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                    }}
+                    onClick={openModal}
+                    >
+                    <Modal
+                      isOpen={modalIsOpen}
+                      onAfterOpen={afterOpenModal}
+                      onRequestClose={closeModal}
+                      style={customStyles}
+                      contentLabel="Example Modal"
+                    >
+                      <img style={images} src={win3} onClick={closeModal}/>
+                    </Modal>
+                  </li>
+                )}
+              </Motion>
+            );
+        case 4:
+              return (
+                <Motion style={motionStyle}>
+                  {({ translateX, translateY }) => (
+                    <li
+                      style={{
+                        ...style,
+                        backgroundImage: `url(${goal5})`,
+                        transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                      }}
+                      onClick={openModal}
+                      >
+                      <Modal
+                        isOpen={modalIsOpen}
+                        onAfterOpen={afterOpenModal}
+                        onRequestClose={closeModal}
+                        style={customStyles}
+                        contentLabel="Example Modal"
+                      >
+                        <img style={images} src={win5} onClick={closeModal}/>
+                      </Modal>
+                    </li>
+                  )}
+                </Motion>
+              );
     case 5:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal6})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
+                return (
+                  <Motion style={motionStyle}>
+                    {({ translateX, translateY }) => (
+                      <li
+                        style={{
+                          ...style,
+                          backgroundImage: `url(${goal6})`,
+                          transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                        }}
+                        onClick={openModal}
+                        >
+                        <Modal
+                          isOpen={modalIsOpen}
+                          onAfterOpen={afterOpenModal}
+                          onRequestClose={closeModal}
+                          style={customStyles}
+                          contentLabel="Example Modal"
+                        >
+                          <img style={images} src={win6} onClick={closeModal}/>
+                        </Modal>
+                      </li>
+                    )}
+                  </Motion>
+                );
     case 6:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal7})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
+                  return (
+                    <Motion style={motionStyle}>
+                      {({ translateX, translateY }) => (
+                        <li
+                          style={{
+                            ...style,
+                            backgroundImage: `url(${goal7})`,
+                            transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                          }}
+                          onClick={openModal}
+                          >
+                          <Modal
+                            isOpen={modalIsOpen}
+                            onAfterOpen={afterOpenModal}
+                            onRequestClose={closeModal}
+                            style={customStyles}
+                            contentLabel="Example Modal"
+                          >
+                            <img style={images} src={win7} onClick={closeModal}/>
+                          </Modal>
+                        </li>
+                      )}
+                    </Motion>
+                  );
     case 7:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal8})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
+                    return (
+                      <Motion style={motionStyle}>
+                        {({ translateX, translateY }) => (
+                          <li
+                            style={{
+                              ...style,
+                              backgroundImage: `url(${goal8})`,
+                              transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                            }}
+                            onClick={openModal}
+                            >
+                            <Modal
+                              isOpen={modalIsOpen}
+                              onAfterOpen={afterOpenModal}
+                              onRequestClose={closeModal}
+                              style={customStyles}
+                              contentLabel="Example Modal"
+                            >
+                              <img style={images} src={win8} onClick={closeModal}/>
+                            </Modal>
+                          </li>
+                        )}
+                      </Motion>
+                    );
     case 8:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal9})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
+                      return (
+                        <Motion style={motionStyle}>
+                          {({ translateX, translateY }) => (
+                            <li
+                              style={{
+                                ...style,
+                                backgroundImage: `url(${goal9})`,
+                                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                              }}
+                              onClick={openModal}
+                              >
+                              <Modal
+                                isOpen={modalIsOpen}
+                                onAfterOpen={afterOpenModal}
+                                onRequestClose={closeModal}
+                                style={customStyles}
+                                contentLabel="Example Modal"
+                              >
+                                <img style={images} src={win9} onClick={closeModal}/>
+                              </Modal>
+                            </li>
+                          )}
+                        </Motion>
+                      );
     case 9:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal10})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
+                        return (
+                          <Motion style={motionStyle}>
+                            {({ translateX, translateY }) => (
+                              <li
+                                style={{
+                                  ...style,
+                                  backgroundImage: `url(${goal10})`,
+                                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                                }}
+                                onClick={openModal}
+                                >
+                                <Modal
+                                  isOpen={modalIsOpen}
+                                  onAfterOpen={afterOpenModal}
+                                  onRequestClose={closeModal}
+                                  style={customStyles}
+                                  contentLabel="Example Modal"
+                                >
+                                  <img style={images} src={win10} onClick={closeModal}/>
+                                </Modal>
+                              </li>
+                            )}
+                          </Motion>
+                        );
     case 10:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal11})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
-    case 11:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal12})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
-    case 12:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal13})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
-    case 13:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal14})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
-    case 14:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal15})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
-    case 15:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal16})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
+                          return (
+                            <Motion style={motionStyle}>
+                              {({ translateX, translateY }) => (
+                                <li
+                                  style={{
+                                    ...style,
+                                    backgroundImage: `url(${goal11})`,
+                                    transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                                  }}
+                                  onClick={openModal}
+                                  >
+                                  <Modal
+                                    isOpen={modalIsOpen}
+                                    onAfterOpen={afterOpenModal}
+                                    onRequestClose={closeModal}
+                                    style={customStyles}
+                                    contentLabel="Example Modal"
+                                  >
+                                    <img style={images} src={win11} onClick={closeModal}/>
+                                  </Modal>
+                                </li>
+                              )}
+                            </Motion>
+                          );
+      case 11:
+                            return (
+                              <Motion style={motionStyle}>
+                                {({ translateX, translateY }) => (
+                                  <li
+                                    style={{
+                                      ...style,
+                                      backgroundImage: `url(${goal12})`,
+                                      transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                                    }}
+                                    onClick={openModal}
+                                    >
+                                    <Modal
+                                      isOpen={modalIsOpen}
+                                      onAfterOpen={afterOpenModal}
+                                      onRequestClose={closeModal}
+                                      style={customStyles}
+                                      contentLabel="Example Modal"
+                                    >
+                                      <img style={images} src={win12} onClick={closeModal}/>
+                                    </Modal>
+                                  </li>
+                                )}
+                              </Motion>
+                            );
+      case 12:
+                              return (
+                                <Motion style={motionStyle}>
+                                  {({ translateX, translateY }) => (
+                                    <li
+                                      style={{
+                                        ...style,
+                                        backgroundImage: `url(${goal13})`,
+                                        transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                                      }}
+                                      onClick={openModal}
+                                      >
+                                      <Modal
+                                        isOpen={modalIsOpen}
+                                        onAfterOpen={afterOpenModal}
+                                        onRequestClose={closeModal}
+                                        style={customStyles}
+                                        contentLabel="Example Modal"
+                                      >
+                                        <img style={images} src={win13} onClick={closeModal}/>
+                                      </Modal>
+                                    </li>
+                                  )}
+                                </Motion>
+                              );
+      case 13:
+                                return (
+                                  <Motion style={motionStyle}>
+                                    {({ translateX, translateY }) => (
+                                      <li
+                                        style={{
+                                          ...style,
+                                          backgroundImage: `url(${goal14})`,
+                                          transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                                        }}
+                                        onClick={openModal}
+                                        >
+                                        <Modal
+                                          isOpen={modalIsOpen}
+                                          onAfterOpen={afterOpenModal}
+                                          onRequestClose={closeModal}
+                                          style={customStyles}
+                                          contentLabel="Example Modal"
+                                        >
+                                          <img style={images} src={win14} onClick={closeModal}/>
+                                        </Modal>
+                                      </li>
+                                    )}
+                                  </Motion>
+                                );
+                                case 12:
+                                  return (
+                                    <Motion style={motionStyle}>
+                                      {({ translateX, translateY }) => (
+                                        <li
+                                          style={{
+                                            ...style,
+                                            backgroundImage: `url(${goal14})`,
+                                            transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                                          }}
+                                          onClick={openModal}
+                                          >
+                                          <Modal
+                                            isOpen={modalIsOpen}
+                                            onAfterOpen={afterOpenModal}
+                                            onRequestClose={closeModal}
+                                            style={customStyles}
+                                            contentLabel="Example Modal"
+                                          >
+                                            <img style={images} src={win14} onClick={closeModal}/>
+                                          </Modal>
+                                        </li>
+                                      )}
+                                    </Motion>
+                                  );
+      case 14:
+                                    return (
+                                      <Motion style={motionStyle}>
+                                        {({ translateX, translateY }) => (
+                                          <li
+                                            style={{
+                                              ...style,
+                                              backgroundImage: `url(${goal15})`,
+                                              transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                                            }}
+                                            onClick={openModal}
+                                            >
+                                            <Modal
+                                              isOpen={modalIsOpen}
+                                              onAfterOpen={afterOpenModal}
+                                              onRequestClose={closeModal}
+                                              style={customStyles}
+                                              contentLabel="Example Modal"
+                                            >
+                                              <img style={images} src={win15} onClick={closeModal}/>
+                                            </Modal>
+                                          </li>
+                                        )}
+                                      </Motion>
+                                    );
+      case 15:
+                                      return (
+                                        <Motion style={motionStyle}>
+                                          {({ translateX, translateY }) => (
+                                            <li
+                                              style={{
+                                                ...style,
+                                                backgroundImage: `url(${goal16})`,
+                                                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                                              }}
+                                              onClick={openModal}
+                                              >
+                                              <Modal
+                                                isOpen={modalIsOpen}
+                                                onAfterOpen={afterOpenModal}
+                                                onRequestClose={closeModal}
+                                                style={customStyles}
+                                                contentLabel="Example Modal"
+                                              >
+                                                <img style={images} src={win16} onClick={closeModal}/>
+                                              </Modal>
+                                            </li>
+                                          )}
+                                        </Motion>
+                                      );
     case 16:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${goal17})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
+                                        return (
+                                          <Motion style={motionStyle}>
+                                            {({ translateX, translateY }) => (
+                                              <li
+                                                style={{
+                                                  ...style,
+                                                  backgroundImage: `url(${goal17})`,
+                                                  transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                                                }}
+                                                onClick={openModal}
+                                                >
+                                                <Modal
+                                                  isOpen={modalIsOpen}
+                                                  onAfterOpen={afterOpenModal}
+                                                  onRequestClose={closeModal}
+                                                  style={customStyles}
+                                                  contentLabel="Example Modal"
+                                                >
+                                                  <img style={images} src={win17} onClick={closeModal}/>
+                                                </Modal>
+                                              </li>
+                                            )}
+                                          </Motion>
+                                        );
     case 17:
-      return (
-        <Motion style={motionStyle}>
-          {({ translateX, translateY }) => (
-            <li
-              style={{
-                ...style,
-                backgroundImage: `url(${globalGoals})`,
-                transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
-              }}
-              onClick={handleClick}></li>
-          )}
-        </Motion>
-      );
+                                          return (
+                                            <Motion style={motionStyle}>
+                                              {({ translateX, translateY }) => (
+                                                <li
+                                                  style={{
+                                                    ...style,
+                                                    backgroundImage: `url(${globalGoals})`,
+                                                    transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
+                                                  }}
+                                                  onClick={handleClick}
+                                                  >
+                                                  
+                                                </li>
+                                              )}
+                                            </Motion>
+                                          );                                                                                                                                                      
     default:
       return <></>;
   }
