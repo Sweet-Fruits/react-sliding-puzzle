@@ -64,7 +64,7 @@ const TilesHook = props => {
             key={number}
             width={pieceWidth}
             height={pieceHeight}
-            onClick={handleTileClick}
+            onClick={isShuffled ? handleTileClick : null}
             solved={solved}
             isShuffled={isShuffled}
           />
