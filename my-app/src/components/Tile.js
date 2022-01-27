@@ -6,7 +6,6 @@ import {
 } from '../helpers/util';
 import { Motion, spring } from 'react-motion';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import globalGoals from '../assets/global-goals.png';
 import goal1 from '../assets/goal1.png';
@@ -54,24 +53,22 @@ const holeStyle = {
 };
 
 const Tile = props => {
-
   let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modal, setModal] = useState(false);
 
   const openModal = () => {
-    setIsOpen(true);
-  }
+    setModal(!modal);
+  };
 
   const afterOpenModal = () => {
     // references are now sync'd and can be accessed.
     subtitle.style.color = '#f00';
-  }
+  };
 
   const closeModal = () => {
-    setIsOpen(false);
-    console.log("!");
-  }
-  
+    setModal(!modal);
+  };
+
   const handleClick = () => {
     const { index, solved } = props;
     props.onClick(index);
@@ -106,17 +103,15 @@ const Tile = props => {
                 backgroundImage: `url(${goal1})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}
-              >
-               <button onClick={openModal}>Open Modal</button>
+              onClick={handleClick}>
+              <button onClick={openModal}>Open Modal</button>
               <Modal
-                isOpen={modalIsOpen}
+                isOpen={modal}
                 onAfterOpen={afterOpenModal}
                 onRequestClose={closeModal}
                 style={customStyles}
-                contentLabel="Example Modal"
-              >
-                <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+                contentLabel="Example Modal">
+                <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2>
                 <button onClick={closeModal}>close</button>
                 <div>I am a modal</div>
               </Modal>
