@@ -5,7 +5,9 @@ import {
   getVisualPosition,
 } from '../helpers/util';
 import { Motion, spring } from 'react-motion';
-import Modal from './Modal';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 import globalGoals from '../assets/global-goals.png';
 import goal1 from '../assets/goal1.png';
 import goal2 from '../assets/goal2.png';
@@ -34,26 +36,47 @@ const tileStyle = {
   position: 'absolute',
 };
 
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
+// Modal.setAppElement('#yourAppElement');
+
 const holeStyle = {
   opacity: 1,
 };
 
 const Tile = props => {
-  const [show, setShow] = useState(false);
 
-  const showModal = () => {
-    setShow(true);
-  };
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
-  const hideModal = () => {
-    setShow(false);
-  };
+  const openModal = () => {
+    setIsOpen(true);
+  }
 
+  const afterOpenModal = () => {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+
+  const closeModal = () => {
+    setIsOpen(false);
+    console.log("!");
+  }
+  
   const handleClick = () => {
     const { index, solved } = props;
     props.onClick(index);
     if (isSolved(solved)) {
-      showModal();
+      openModal();
     }
   };
 
@@ -83,9 +106,19 @@ const Tile = props => {
                 backgroundImage: `url(${goal1})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}>
-              <Modal show={show} handleClose={hideModal}>
-                <li style={{ backgroundImage: `url(${goal1})` }}>Loco</li>
+              onClick={handleClick}
+              >
+               <button onClick={openModal}>Open Modal</button>
+              <Modal
+                isOpen={modalIsOpen}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal"
+              >
+                <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+                <button onClick={closeModal}>close</button>
+                <div>I am a modal</div>
               </Modal>
             </li>
           )}
