@@ -25,6 +25,23 @@ import goal14 from '../assets/goal14.png';
 import goal15 from '../assets/goal15.png';
 import goal16 from '../assets/goal16.png';
 import goal17 from '../assets/goal17.png';
+import win1 from '../assets/win1.jpg';
+import win2 from '../assets/win2.jpg';
+import win3 from '../assets/win3.jpg';
+// import win4 from '../assets/win4.jpg';
+import win5 from '../assets/win5.jpg';
+import win6 from '../assets/win6.jpg';
+import win7 from '../assets/win7.jpg';
+import win8 from '../assets/win8.jpg';
+import win9 from '../assets/win9.jpg';
+import win10 from '../assets/win10.jpg';
+import win11 from '../assets/win11.jpg';
+import win12 from '../assets/win12.jpg';
+import win13 from '../assets/win13.jpg';
+import win14 from '../assets/win14.png';
+import win15 from '../assets/win15.jpg';
+import win16 from '../assets/win16.png';
+import win17 from '../assets/win17.jpg';
 
 const tileStyle = {
   backgroundColor: 'grey',
@@ -52,9 +69,16 @@ const holeStyle = {
   opacity: 1,
 };
 
+const images = {
+  width: 1066,
+  height: 600,
+};
+
 const Tile = props => {
   let subtitle;
   const [modal, setModal] = useState(false);
+
+  console.log(modal);
 
   const openModal = () => {
     setModal(!modal);
@@ -104,16 +128,18 @@ const Tile = props => {
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
               onClick={handleClick}>
-              <button onClick={openModal}>Open Modal</button>
               <Modal
                 isOpen={modal}
                 onAfterOpen={afterOpenModal}
                 onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="Example Modal">
-                <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2>
-                <button onClick={closeModal}>close</button>
-                <div>I am a modal</div>
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win1}
+                  onClick={closeModal}
+                />
               </Modal>
             </li>
           )}
@@ -129,7 +155,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal2})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win2}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
@@ -143,7 +183,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal3})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win3}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
@@ -157,7 +211,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal4})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win3}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
@@ -171,7 +239,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal5})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win5}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
@@ -185,7 +267,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal6})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win6}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
@@ -199,7 +295,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal7})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win7}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
@@ -213,7 +323,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal8})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win8}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
@@ -227,7 +351,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal9})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win9}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
@@ -241,7 +379,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal10})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win10}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
@@ -255,7 +407,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal11})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win11}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
@@ -269,7 +435,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal12})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win12}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
@@ -283,7 +463,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal13})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win13}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
@@ -297,7 +491,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal14})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win14}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
@@ -311,7 +519,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal15})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win15}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
@@ -325,7 +547,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal16})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win16}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
@@ -339,7 +575,21 @@ const Tile = props => {
                 backgroundImage: `url(${goal17})`,
                 transform: `translate3d(${translateX}px, ${translateY}px, 0)`,
               }}
-              onClick={handleClick}></li>
+              onClick={handleClick}>
+              <Modal
+                isOpen={modal}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal">
+                <img
+                  alt="global-goal"
+                  style={images}
+                  src={win17}
+                  onClick={closeModal}
+                />
+              </Modal>
+            </li>
           )}
         </Motion>
       );
