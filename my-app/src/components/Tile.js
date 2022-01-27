@@ -6,7 +6,6 @@ import {
 } from '../helpers/util';
 import { Motion, spring } from 'react-motion';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import globalGoals from '../assets/global-goals.png';
 import goal1 from '../assets/goal1.png';
@@ -76,7 +75,6 @@ const holeStyle = {
 };
 
 const Tile = props => {
-
   let subtitle;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   
@@ -87,7 +85,7 @@ const Tile = props => {
 
   const afterOpenModal = () => {
     subtitle.style.color = '#f00';
-  }
+  };
 
   const closeModal = () => {
     setModalIsOpen(!modalIsOpen);
@@ -133,7 +131,7 @@ const Tile = props => {
               onClick={openModal}
               >
               <Modal
-                isOpen={modalIsOpen}
+                isOpen={modal}
                 onAfterOpen={afterOpenModal}
                 onRequestClose={closeModal}
                 style={customStyles}
