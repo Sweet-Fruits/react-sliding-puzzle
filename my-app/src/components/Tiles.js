@@ -20,7 +20,6 @@ const TilesHook = props => {
   const [numberState, setNumberState] = useState(_.range(0, rows * cols));
   const [isShuffled, setIsShuffled] = useState(false);
   const solved = isSolved(numberState);
-  console.log(solved);
   const pieceWidth = Math.round(width / cols);
   const pieceHeight = Math.round(height / rows);
 
@@ -46,6 +45,9 @@ const TilesHook = props => {
   };
 
   const swap = tileIndex => {
+    if (solved) {
+      return;
+    }
     const numbers = numberState;
     const holeIndex = numbers.indexOf(hole);
     if (canSwap(tileIndex, holeIndex, rows, cols)) {
