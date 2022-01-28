@@ -124,7 +124,6 @@ const Card = ({
   number,
   hole,
 }) => {
-  let subtitle;
   const [modal, setModal] = useState(false);
 
   const matrixPos = getMatrixPosition(index, rows, cols);
@@ -137,10 +136,6 @@ const Card = ({
 
   const openModal = () => {
     setModal(!modal);
-  };
-
-  const afterOpenModal = () => {
-    subtitle.style.color = '#f00';
   };
 
   const closeModal = () => {
@@ -174,9 +169,9 @@ const Card = ({
           {number === 17 ? null : (
             <Modal
               isOpen={modal}
-              onAfterOpen={afterOpenModal}
               onRequestClose={closeModal}
               style={customStyles}
+              ariaHideApp={false}
               contentLabel="Example Modal">
               <img
                 alt="global-goal"

@@ -20,6 +20,7 @@ const TilesHook = props => {
   const [numberState, setNumberState] = useState(_.range(0, rows * cols));
   const [isShuffled, setIsShuffled] = useState(false);
   const solved = isSolved(numberState);
+  console.log(solved);
   const pieceWidth = Math.round(width / cols);
   const pieceHeight = Math.round(height / rows);
 
@@ -64,7 +65,7 @@ const TilesHook = props => {
             key={number}
             width={pieceWidth}
             height={pieceHeight}
-            onClick={isShuffled ? handleTileClick : null}
+            onClick={isShuffled ? handleTileClick : () => {}}
             solved={solved}
             isShuffled={isShuffled}
           />
