@@ -67,6 +67,7 @@ img {
 
 .rainbow-button:hover {
   animation: slidebg 10s linear infinite;
+  cursor: pointer;
 }
 
 @keyframes slidebg {

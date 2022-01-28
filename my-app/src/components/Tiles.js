@@ -27,6 +27,7 @@ const TilesHook = props => {
     ...tilesStyle,
     width,
     height,
+    cursor: 'pointer',
   };
 
   const handleTileClick = index => {
