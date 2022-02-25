@@ -24,23 +24,23 @@ import goal14 from '../assets/goal14.png';
 import goal15 from '../assets/goal15.png';
 import goal16 from '../assets/goal16.png';
 import goal17 from '../assets/goal17.png';
-import win1 from '../assets/win1.jpg';
-import win2 from '../assets/win2.jpg';
-import win3 from '../assets/win3.jpg';
-// import win4 from '../assets/win4.jpg';
-import win5 from '../assets/win5.jpg';
-import win6 from '../assets/win6.jpg';
-import win7 from '../assets/win7.jpg';
-import win8 from '../assets/win8.jpg';
-import win9 from '../assets/win9.jpg';
-import win10 from '../assets/win10.jpg';
-import win11 from '../assets/win11.jpg';
-import win12 from '../assets/win12.jpg';
-import win13 from '../assets/win13.jpg';
+import win1 from '../assets/win1.png';
+import win2 from '../assets/win2.png';
+import win3 from '../assets/win3.png';
+import win4 from '../assets/win4.png';
+import win5 from '../assets/win5.png';
+import win6 from '../assets/win6.png';
+import win7 from '../assets/win7.png';
+import win8 from '../assets/win8.png';
+import win9 from '../assets/win9.png';
+import win10 from '../assets/win10.png';
+import win11 from '../assets/win11.png';
+import win12 from '../assets/win12.png';
+import win13 from '../assets/win13.png';
 import win14 from '../assets/win14.png';
-import win15 from '../assets/win15.jpg';
+import win15 from '../assets/win15.png';
 import win16 from '../assets/win16.png';
-import win17 from '../assets/win17.jpg';
+import win17 from '../assets/win17.png';
 
 const goals = [
   goal1,
@@ -67,7 +67,7 @@ const wins = [
   win1,
   win2,
   win3,
-  win3,
+  win4,
   win5,
   win6,
   win7,
@@ -108,8 +108,8 @@ const holeStyle = {
 };
 
 const images = {
-  width: 1066,
-  height: 600,
+  width: '100%',
+  height: '100%',
 };
 
 const Card = ({
