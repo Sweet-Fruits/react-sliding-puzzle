@@ -15,7 +15,7 @@ const tilesStyle = {
   position: 'relative',
 };
 
-const TilesHook = props => {
+const Tiles = props => {
   const { rows, cols, width, height, hole } = props;
   const [numberState, setNumberState] = useState(_.range(0, rows * cols));
   const [isShuffled, setIsShuffled] = useState(false);
@@ -83,4 +83,4 @@ const TilesHook = props => {
   );
 };
 
-export default TilesHook;
+export default Tiles;
