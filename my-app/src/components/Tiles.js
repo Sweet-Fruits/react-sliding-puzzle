@@ -18,7 +18,8 @@ const tilesStyle = {
 const Tiles = props => {
   const { rows, cols, width, height, hole } = props;
   const [numberState, setNumberState] = useState(_.range(0, rows * cols));
-  const [isShuffled, setIsShuffled] = useState(true);
+  // Toggle
+  const [isShuffled, setIsShuffled] = useState(false);
   const solved = isSolved(numberState);
   const pieceWidth = Math.round(width / cols);
   const pieceHeight = Math.round(height / rows);
