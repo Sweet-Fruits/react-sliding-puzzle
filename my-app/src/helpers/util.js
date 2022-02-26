@@ -29,6 +29,7 @@ export const getMatrixPosition = (index, rows, cols) => {
   };
 };
 
+// Represent the puzzle piece in the right position
 export const getVisualPosition = ({ row, col }, width, height) => {
   return {
     x: col * width,
@@ -36,6 +37,7 @@ export const getVisualPosition = ({ row, col }, width, height) => {
   };
 };
 
+// Shuffle pieces
 export const shuffle = (numbers, hole, rows, cols) => {
   do {
     numbers = _.shuffle(_.without(numbers, hole)).concat(hole);
@@ -43,12 +45,14 @@ export const shuffle = (numbers, hole, rows, cols) => {
   return numbers;
 };
 
+// Check if 2 pieces can be swapped
 export const canSwap = (src, dest, rows, cols) => {
   const { row: srcRow, col: srcCol } = getMatrixPosition(src, rows, cols);
   const { row: destRow, col: destCol } = getMatrixPosition(dest, rows, cols);
   return Math.abs(srcRow - destRow) + Math.abs(srcCol - destCol) === 1;
 };
 
+// Swap the pieces
 export const swap = (numbers, src, dest) => {
   numbers = _.clone(numbers);
   [numbers[src], numbers[dest]] = [numbers[dest], numbers[src]];
