@@ -21,11 +21,6 @@ export const isSolved = numbers => {
   return true;
 };
 
-// Get the linear index from a row/col pair.
-export const getLinearPosition = ({ row, col }, rows, cols) => {
-  return parseInt(row, 10) * cols + parseInt(col, 10);
-};
-
 // Get the row/col pair from a linear index.
 export const getMatrixPosition = (index, rows, cols) => {
   return {
