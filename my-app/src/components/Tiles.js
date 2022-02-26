@@ -60,6 +60,18 @@ const Tiles = props => {
 
   return (
     <div>
+      {isShuffled && solved ? (
+        <h3
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            fontSize: '1.3rem',
+          }}>
+          Congratulations, you can now learn more about the Global Goals!
+        </h3>
+      ) : (
+        ''
+      )}
       <ul style={style}>
         {numberState.map((number, index, solved) => (
           <Tile
